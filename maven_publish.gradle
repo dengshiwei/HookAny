@@ -1,0 +1,61 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+task sourceJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        mavenAndroid(MavenPublication) {
+            groupId = "com.explore.hook"
+            artifactId = "HookAny"
+            version = "0.0.1"
+            artifact sourceJar
+            artifact javadocJar
+            artifact("build/libs/${project.name}.jar")
+            pom {
+                name = "HookAny"
+                description = "A plugin use to hook method"
+                url = "https://github.com/dengshiwei/HookAny"
+                licenses {
+                    license {
+                        name = "BSD 2-Clause License"
+                        url = "https://github.com/dengshiwei/HookAny?tab=BSD-2-Clause-1-ov-file"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "dsw"
+                        name = "dsw"
+                        email = "andoter0501@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "https://github.com/dengshiwei/HookAny"
+                    developerConnection = "https://github.com/dengshiwei/HookAny"
+                    url = "https://github.com/dengshiwei/HookAny"
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = '../repo'
+        }
+    }
+}

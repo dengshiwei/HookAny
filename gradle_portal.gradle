@@ -1,0 +1,23 @@
+apply plugin: 'com.gradle.plugin-publish'
+
+group = "com.explore.hook"
+version = "0.0.1"
+
+gradlePlugin {
+    plugins {
+        sdkChecker {
+            id = 'com.explore.hook'
+            implementationClass = "com.explore.hook.HookPlugin"
+            displayName = 'HookAny'
+            description = "A plugin use to hook method"
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url ='../repo'
+        }
+    }
+}
