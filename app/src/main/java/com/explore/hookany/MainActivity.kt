@@ -1,6 +1,7 @@
 package com.explore.hookany
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,5 +28,13 @@ class MainActivity : AppCompatActivity() {
 
     fun injectMethod() {
         titleTV.setText("HookAny")
+    }
+
+    fun injectMethodParams(age: Int) {
+        titleTV.setText("HookAny")
+    }
+
+    fun logSomething() {
+        Log.d("Explore", "asm insert log")
     }
 }

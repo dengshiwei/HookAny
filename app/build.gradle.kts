@@ -39,26 +39,28 @@ android {
 }
 hookConfig.configs.set(
     listOf(
-        createInstrumentItem(
-            "com/explore/hookany/MainActivity",
-            "injectMethod",
-            "()V",
-            "onMethodEnter"
-        ),
-        createInstrumentItem("com.example.B", "onClick", "(Landroid/view/View;)V", "onMethodExit")
+        objects.newInstance(InstrumentItem::class.java).apply {
+            targetClass.set("com/explore/hookany/MainActivity")
+            methodName.set("injectMethod")
+            methodDesc.set("()V")
+            insertLocation.set("onMethodEnter")
+            injectClass.set("com/explore/hookany/MainActivity")
+            injectMethod.set("logSomething")
+            injectMethodDesc.set("()V") // 如果有参数就用 "(Ljava/lang/String;)V"
+            injectCallType.set("virtual") // 非静态方法
+        },
+        objects.newInstance(InstrumentItem::class.java).apply {
+            targetClass.set("com/explore/hookany/MainActivity")
+            methodName.set("injectMethodParams")
+            methodDesc.set("(I)V")
+            insertLocation.set("onMethodEnter")
+            injectClass.set("java/lang/System")
+            injectMethod.set("currentTimeMillis")
+            injectMethodDesc.set("()V") // 如果有参数就用 "(Ljava/lang/String;)V"
+            injectCallType.set("static") // 静态方法
+        },
     )
 )
-fun createInstrumentItem(
-    targetClass: String,
-    methodName: String,
-    methodDesc: String,
-    insertLocation: String
-): InstrumentItem = objects.newInstance(InstrumentItem::class.java).apply {
-    this.targetClass.set(targetClass)
-    this.methodName.set(methodName)
-    this.methodDesc.set(methodDesc)
-    this.insertLocation.set(insertLocation)
-}
 
 dependencies {
     implementation(libs.androidx.core.ktx)
