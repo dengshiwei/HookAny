@@ -19,11 +19,9 @@ class ClassInsertVisitor(
 
     override fun visitMethod(access: Int, name: String, descriptor: String, signature: String?, exceptions: Array<out String>?): MethodVisitor {
         val mv = super.visitMethod(access, name, descriptor, signature, exceptions)
-
         config.get().forEach { itemConfig ->
-            println("方法名：${itemConfig.methodName}")
-            if (name == itemConfig.methodName && descriptor == itemConfig.methodDesc && className == itemConfig.targetClass) {
-                MethodInsertAdapter(api, mv, access, name, descriptor, itemConfig)
+            if (name == itemConfig.methodName.get() && descriptor == itemConfig.methodDesc.get() && className == itemConfig.targetClass.get()) {
+                return MethodInsertAdapter(api, mv, access, name, descriptor, itemConfig)
             }
         }
 

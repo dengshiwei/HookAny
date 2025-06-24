@@ -13,20 +13,22 @@ class MethodInsertAdapter(
 ) : AdviceAdapter(api, mv, access, name, descriptor) {
 
     override fun onMethodEnter() {
-        if (config.insertLocation == "onMethodEnter") {
+        super.onMethodEnter()
+        if (config.insertLocation.get() == "onMethodEnter") {
             injectCode()
         }
     }
 
     override fun onMethodExit(opcode: Int) {
-        if (config.insertLocation == "onMethodExit") {
+        super.onMethodExit(opcode)
+        if (config.insertLocation.get() == "onMethodExit") {
             injectCode()
         }
     }
 
     private fun injectCode() {
         mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;")
-        mv.visitLdcInsn(">> Inserted by ASM for ${config.methodName}")
+        mv.visitLdcInsn(">> Inserted by ASM for ${config.methodName.get()} is called.")
         mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false)
     }
 }

@@ -1,28 +1,29 @@
 package com.explore.hook
 
 import com.android.build.api.instrumentation.InstrumentationParameters
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
-import org.gradle.internal.impldep.kotlinx.serialization.Serializable
+import javax.inject.Inject
 
 abstract class HookConfig {
     abstract val configs: ListProperty<InstrumentItem>
 }
 
-@Serializable
-class InstrumentItem {
-    @get:Input
-    lateinit var targetClass: String
+abstract class InstrumentItem @Inject constructor(objectFactory: ObjectFactory) {
 
     @get:Input
-    lateinit var methodName: String
+    abstract val targetClass: Property<String>
 
     @get:Input
-    lateinit var methodDesc: String
+    abstract val methodName: Property<String>
 
     @get:Input
-    lateinit var insertLocation: String // "onMethodEnter" or "onMethodExit"
+    abstract val methodDesc: Property<String>
+
+    @get:Input
+    abstract val insertLocation: Property<String>  // e.g. "onMethodEnter" or "onMethodExit"
 }
 
 interface ConfigInstrumentParams : InstrumentationParameters {

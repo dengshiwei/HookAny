@@ -36,21 +36,29 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-
-    hookConfig {
-        configs.set(
-            listOf(
-                InstrumentItem(
-                    targetClass = "com.explore.hookany.MainActivity",
-                    methodName = "injectMethod",
-                    methodDesc = "()V",
-                    insertLocation = "onMethodEnter"
-                )
-            )
-        )
-    }
 }
-
+hookConfig.configs.set(
+    listOf(
+        createInstrumentItem(
+            "com/explore/hookany/MainActivity",
+            "injectMethod",
+            "()V",
+            "onMethodEnter"
+        ),
+        createInstrumentItem("com.example.B", "onClick", "(Landroid/view/View;)V", "onMethodExit")
+    )
+)
+fun createInstrumentItem(
+    targetClass: String,
+    methodName: String,
+    methodDesc: String,
+    insertLocation: String
+): InstrumentItem = objects.newInstance(InstrumentItem::class.java).apply {
+    this.targetClass.set(targetClass)
+    this.methodName.set(methodName)
+    this.methodDesc.set(methodDesc)
+    this.insertLocation.set(insertLocation)
+}
 
 dependencies {
     implementation(libs.androidx.core.ktx)
