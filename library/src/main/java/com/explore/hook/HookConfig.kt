@@ -5,10 +5,12 @@ import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Optional
 import javax.inject.Inject
 
 abstract class HookConfig {
     abstract val configs: ListProperty<InstrumentItem>
+    abstract val debug: Property<Boolean>
 }
 
 abstract class InstrumentItem @Inject constructor(objectFactory: ObjectFactory) {
@@ -42,4 +44,8 @@ abstract class InstrumentItem @Inject constructor(objectFactory: ObjectFactory) 
 interface ConfigInstrumentParams : InstrumentationParameters {
     @get:Input
     var configs: ListProperty<InstrumentItem>
+
+    @get:Input
+    @get:Optional
+    val debug: Property<Boolean>
 }

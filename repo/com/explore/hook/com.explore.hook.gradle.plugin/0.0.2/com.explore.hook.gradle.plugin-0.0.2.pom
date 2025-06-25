@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.explore.hook</groupId>
+  <artifactId>com.explore.hook.gradle.plugin</artifactId>
+  <version>0.0.2</version>
+  <packaging>pom</packaging>
+  <name>HookAny</name>
+  <description>A plugin use to hook method</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.explore.hook</groupId>
+      <artifactId>library</artifactId>
+      <version>0.0.2</version>
+    </dependency>
+  </dependencies>
+</project>

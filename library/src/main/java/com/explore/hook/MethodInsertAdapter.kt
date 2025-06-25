@@ -12,7 +12,7 @@ class MethodInsertAdapter(
     descriptor: String,
     private val config: InstrumentItem
 ) : AdviceAdapter(api, mv, access, name, descriptor) {
-
+    private val TAG = "HookAny"
     var isInjected = false
 
     override fun onMethodEnter() {
@@ -64,6 +64,7 @@ class MethodInsertAdapter(
     }
 
     fun showParams(opcode: Int) {
+        HookLogger.log(TAG, "showParams is called")
         val argTypes = Type.getArgumentTypes(methodDesc)
         if (argTypes.isEmpty()) return
 

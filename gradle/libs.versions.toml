@@ -15,7 +15,7 @@ asmCommons="9.1"
 asmAnalysis="9.1"
 asmUtil="9.1"
 jetbrainsKotlinJvm = "2.0.21"
-hookAny = "0.0.1"
+hookAny = "0.0.2"
 pluginPublish = "1.1.0"
 
 [libraries]

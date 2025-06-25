@@ -6,30 +6,33 @@
 下载 repo 包放到工程目录下。分别在 gradle 配置中集成插件。集成完成后再对应的 app  build.gradle 中配置 hook 的函数信息。
 
 ```
-hookConfig.configs.set(
-    listOf(
-        objects.newInstance(InstrumentItem::class.java).apply {
-            targetClass.set("com/explore/hookany/MainActivity")
-            methodName.set("injectMethod")
-            methodDesc.set("()V")
-            insertLocation.set("onMethodEnter")
-            injectClass.set("com/explore/hookany/MainActivity")
-            injectMethod.set("logSomething")
-            injectMethodDesc.set("()V") // 如果有参数就用 "(Ljava/lang/String;)V"
-            injectCallType.set("virtual") // 非静态方法
-        },
-        objects.newInstance(InstrumentItem::class.java).apply {
-            targetClass.set("com/explore/hookany/MainActivity")
-            methodName.set("injectMethodParams")
-            methodDesc.set("(I)V")
-            insertLocation.set("onMethodEnter")
-            injectClass.set("java/lang/System")
-            injectMethod.set("currentTimeMillis")
-            injectMethodDesc.set("()V") // 如果有参数就用 "(Ljava/lang/String;)V"
-            injectCallType.set("static") // 静态方法
-        },
+hookConfig {
+    debug = true
+    configs.set(
+        listOf(
+            objects.newInstance(InstrumentItem::class.java).apply {
+                targetClass.set("com/explore/hookany/MainActivity")
+                methodName.set("injectMethod")
+                methodDesc.set("()V")
+                insertLocation.set("onMethodEnter")
+                injectClass.set("com/explore/hookany/MainActivity")
+                injectMethod.set("logSomething")
+                injectMethodDesc.set("()V") // 如果有参数就用 "(Ljava/lang/String;)V"
+                injectCallType.set("virtual") // 非静态方法
+            },
+            objects.newInstance(InstrumentItem::class.java).apply {
+                targetClass.set("com/explore/hookany/MainActivity")
+                methodName.set("injectMethodParams")
+                methodDesc.set("(I)V")
+                insertLocation.set("onMethodEnter")
+                injectClass.set("java/lang/System")
+                injectMethod.set("currentTimeMillis")
+                injectMethodDesc.set("()V") // 如果有参数就用 "(Ljava/lang/String;)V"
+                injectCallType.set("static") // 静态方法
+            },
+        )
     )
-)
+}
 ```
 
 详细信息参照 demo

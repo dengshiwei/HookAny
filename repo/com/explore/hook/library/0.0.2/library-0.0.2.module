@@ -1,0 +1,150 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.explore.hook",
+    "module": "library",
+    "version": "0.0.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.14.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "library-0.0.2.jar",
+          "url": "library-0.0.2.jar",
+          "size": 17597,
+          "sha512": "4af7ab2492b820253af5c566a5f4476b83a80cf59fc37dcb03f2d08cf57921af58b4620a4b5a174e51fae02923a2b3bec9168d9617fd057e581444da98dac4ce",
+          "sha256": "ceed9a9f636f59881193595bffb7269a34e6cde62a7935456c8157fee2b9c54d",
+          "sha1": "3926d6f83d858d42e3d2851a8d3457c86ab02c69",
+          "md5": "deb9cfa576b0999268aace0c06e75a9b"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.ow2.asm",
+          "module": "asm",
+          "version": {
+            "requires": "9.1"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-commons",
+          "version": {
+            "requires": "9.1"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-analysis",
+          "version": {
+            "requires": "9.1"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-util",
+          "version": {
+            "requires": "9.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "library-0.0.2.jar",
+          "url": "library-0.0.2.jar",
+          "size": 17597,
+          "sha512": "4af7ab2492b820253af5c566a5f4476b83a80cf59fc37dcb03f2d08cf57921af58b4620a4b5a174e51fae02923a2b3bec9168d9617fd057e581444da98dac4ce",
+          "sha256": "ceed9a9f636f59881193595bffb7269a34e6cde62a7935456c8157fee2b9c54d",
+          "sha1": "3926d6f83d858d42e3d2851a8d3457c86ab02c69",
+          "md5": "deb9cfa576b0999268aace0c06e75a9b"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "library-0.0.2-javadoc.jar",
+          "url": "library-0.0.2-javadoc.jar",
+          "size": 261,
+          "sha512": "46470d48edde1ca89a6abc2462c3b68645a94449c6c15f87d23229180c42352b94c4605aa9d7bd8eef8126cd45e38c71889b1b3b6939bb35c5694bc032d3423d",
+          "sha256": "a8d723befdfa2b930cbc9259c275de6fecac164625430c469614011355752d70",
+          "sha1": "6915a434cbb9df62d92be025011947f9b5342c45",
+          "md5": "facf557c616b674d6c86b29342f80cef"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "library-0.0.2-sources.jar",
+          "url": "library-0.0.2-sources.jar",
+          "size": 5220,
+          "sha512": "8314e2a2590bc5d19fd179597b64b2f32ba34370f2cb367291df79aed22d2ec97a7c3bad06961f5018ce6c7dc0955d9ff72a043df6f87c683089928f62ed39bb",
+          "sha256": "b2cd1138a27122507be2401941d7a098553f901cc57f244f30a7d64b63512a7b",
+          "sha1": "1012873f8f7c1d3cfd27e1736a1616845e1bcf37",
+          "md5": "a3efc33e2b43e2d914da9ef362547dd5"
+        }
+      ]
+    }
+  ]
+}
